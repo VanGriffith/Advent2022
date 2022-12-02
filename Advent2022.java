@@ -14,12 +14,6 @@ public class Advent2022 {
             wrongInputProtocol();
         }
 
-
-        for (int i=1; i<=25; i++) {
-            System.out.printf("case %d:\nDay%d.Day%d.main(null);\nbreak;\n/*\n",i,i,i);
-        }
-
-
         System.out.printf("Day %d's answers:\n", dayNumber);
         switch (dayNumber) {
             case 1:
