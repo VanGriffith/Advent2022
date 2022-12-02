@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class Main {
+public class Day1 {
     public static void main(String[] args) {
         try {
             Scanner sc = new Scanner(new File("Day1/input.txt"));
@@ -37,6 +37,7 @@ public class Main {
 
                 }
             }
+            System.out.println(firstMost + secondMost + thirdMost);
             System.out.println(firstMost + secondMost + thirdMost);
             sc.close();
             
