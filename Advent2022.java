@@ -20,7 +20,7 @@ public class Advent2022 {
         }
 
 
-        
+        System.out.printf("Day %d's answers:\n", dayNumber);
         switch (dayNumber) {
             case 1:
                 Day1.Day1.main(null);
@@ -28,6 +28,7 @@ public class Advent2022 {
             
             case 2:
                 Day2.Day2.main(null);
+                Day2.Day2Problem2.main(null);
                 break;
             /*
             case 3:
