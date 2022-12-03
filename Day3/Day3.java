@@ -8,9 +8,33 @@ public class Day3 {
         try {
             Scanner sc = new Scanner(new File("Day3/input.txt"));
             
+            int priortySum = 0;
+
             while (sc.hasNext()) {
-                String nextLine = sc.nextLine();
+                String rucksack = sc.nextLine();
+                String compartmentOne = rucksack.substring(0,rucksack.length()/2);
+                String compartmentTwo = rucksack.substring(rucksack.length()/2);
+                char letter = '0';
+
+                for (int i = 0; i < compartmentOne.length(); i++) {
+                    for (int j = 0; j < compartmentTwo.length(); j++) {
+                        if (compartmentOne.charAt(i) == compartmentTwo.charAt(j)) {
+                            letter = compartmentOne.charAt(i);
+                            i = compartmentOne.length();
+                            j = compartmentTwo.length();
+                        }
+                    }
+                }
+
+                if (letter > 'Z') {
+                    priortySum += letter - 'a' + 1;
+                }
+                else {
+                    priortySum += letter - 'A' + 27;
+                }
             }
+
+            System.out.println(priortySum);
             sc.close();
         }
         catch (FileNotFoundException e) {
