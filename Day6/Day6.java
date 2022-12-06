@@ -1,4 +1,3 @@
-
 package Day6;
 import java.util.Scanner;
 import java.io.File;
@@ -11,6 +10,8 @@ public class Day6 {
             
             while (sc.hasNext()) {
                 String nextLine = sc.nextLine();
+                System.out.println(nextLine);
+                break;
             }
             sc.close();
         }
