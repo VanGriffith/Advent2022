@@ -23,21 +23,9 @@ public class Rope {
         int xDiff = leader.x - this.x;
         int yDiff = leader.y - this.y;
         
-        if (xDiff > 1) {
-            this.x++;
-            this.y += yDiff;
-        }
-        else if (xDiff < -1) {
-            this.x--;
-            this.y += yDiff;
-        }
-        else if (yDiff > 1) {
-            this.y++;
-            this.x += xDiff;
-        }
-        else if (yDiff < -1) {
-            this.y--;
-            this.x += xDiff;
+        if (Math.abs(yDiff) > 1 || Math.abs(xDiff) > 1) {
+            this.x += Integer.signum(xDiff);
+            this.y += Integer.signum(yDiff);
         }
 
         if (this.nextRope != null) {

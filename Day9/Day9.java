@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 public class Day9 {
     public static void main(String[] args) { 
         try {
-            int numKnots = 10;
+            int numKnots = 11;
             Rope head = new Rope(0, 0);
             Rope[] ropes = new Rope[numKnots];
             ropes[0] = head;
@@ -20,7 +20,7 @@ public class Day9 {
 
 
             PositionList positionList = new PositionList();
-            Scanner sc = new Scanner(new File("Day9/babyInput.txt"));
+            Scanner sc = new Scanner(new File("Day9/input.txt"));
 
             while (sc.hasNext()) {
                 char direction = sc.next().charAt(0);
@@ -48,6 +48,7 @@ public class Day9 {
                     // Update Tail
                     head.updatePositions();
                     positionList.add(tail.getPosition());
+                    // System.out.println(tail.getPosition() + "   " + positionList.getUniquePositions());
                 }
             }
             System.out.println(positionList.getUniquePositions());
