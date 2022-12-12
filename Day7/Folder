@@ -1,0 +1,55 @@
+package Day7;
+public class Folder {
+
+    private ArrayList<PFile> files;
+    private ArrayList<Folder> folders;
+    private Folder parentFolder;
+    String name;
+
+    public Folder(String name) {
+        files = new ArrayList<PFile>();
+        folders = new ArrayList<Folder>();
+        this.name = name;
+        this.parentFolder = null;
+    }
+
+    public Folder(String name, Folder parentFolder) {
+        files = new ArrayList<PFile>();
+        folders = new ArrayList<Folder>();
+        this.parentFolder = parentFolder;
+        this.name = name;
+    }
+
+    public Folder getFolder(String name) {
+        for (Folder folder: folders) {
+            if (folder.getName().equals(name)) {
+                return folder;
+            }
+        }
+        return null;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void addFile(PFile file) {
+        files.add(file);
+    }
+    public void addFolder(Folder folder) {
+        folders.add(folder);
+    }
+
+    public int getSize() {
+        int size = 0;
+        for (PFile file: files) {
+            size += file.getSize();
+        }
+
+        for (Folder folder: folders) {
+            size += folder.getSize();
+        }
+        return size;
+    }
+
+}
