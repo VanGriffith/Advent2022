@@ -84,11 +84,8 @@ public class Monkey {
 
     public void print() {
         System.out.println("Monkey " + this.monkeyNumber + ":");
-        System.out.print("Starting items: "); 
-        while (!this.items.isEmpty()) {
-            System.out.print(this.items.remove().getWorryLevel() + " ");
-        }
-        System.out.println("\n  Operation: new = old " + (this.operationMultiply ? "* ":"+ ") + operationNumber);
+        this.printItems();
+        System.out.println("  Operation: new = old " + (this.operationMultiply ? "* ":"+ ") + (this.operationNumber == -1 ? "old" : this.operationNumber));
         System.out.println("  Test: divisible by " + testNumber);
         System.out.println("    If true: throw to monkey " + this.trueMonkeyNumber);
         System.out.println("    If false: throw to monkey " + this.falseMonkeyNumber);
@@ -109,22 +106,7 @@ public class Monkey {
             this.activity++;
         }
     }
-/* 
-    public void operate(Item item) {
-        if (this.operationMultiply) {
-            if (this.operationNumber == -1) {
-                item.setWorryLevel(item.getWorryLevel() * item.getWorryLevel());
-            }
-            else {
-                item.setWorryLevel(item.getWorryLevel() * this.operationNumber);
-            }
-        }
-        else {
-            item.setWorryLevel(item.getWorryLevel() + this.operationNumber);
-        }
-    }
-*/
-
+    
     public boolean testItem(Item item) {
         return item.test(this.testNumber);
     }
@@ -134,13 +116,21 @@ public class Monkey {
     }
 
     public void printItems() {
-        System.out.print("Monkey " + this.monkeyNumber + ": ");
         Queue<Item> tempQueue = new LinkedList<Item>();
+        System.out.print("  Divisors:   ");
+        for (int divisor: Item.getDivisors()) {
+            System.out.printf("%02d  ", divisor);
+        }
 
         while (!this.items.isEmpty()) {
-            Item item = this.items.remove();
-            tempQueue.add(item);
+            Item tempItem = this.items.remove();
+            tempQueue.add(tempItem);
+            System.out.print("\n  Remainders: ");
+            for (int remainder: tempItem.getRemainders()) {
+                System.out.printf("%02d  ", remainder);
+            }
         }
+
         this.items = tempQueue;
         System.out.println();
     }

@@ -52,14 +52,21 @@ public class MonkeyList {
     }
 
     public void print() {
-        for (Monkey monkey: monkeys) {
+        for (Monkey monkey: this.monkeys) {
             monkey.print();
         }
     }
     
     public void printItems() {
-        for (Monkey monkey: monkeys) {
+        for (Monkey monkey: this.monkeys) {
             monkey.printItems();
         }
     }
+
+    public long getMonkeyBusiness() {
+        
+        
+        return 1;
+    }
 }
+
