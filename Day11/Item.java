@@ -34,15 +34,11 @@ public class Item {
     }
 
     public void updateRemainders(boolean multiplying, int operationNumber) {
-        if (operationNumber == -1) {
-            for (int i = 0; i < Item.divisors.length; i++) {
-
-            }
-            return;
-        }
-        
         for (int i = 0; i < this.remainders.length; i++) {
-            if (multiplying) {
+            if (operationNumber == -1) {
+                this.remainders[i] *= this.remainders[i];
+            }
+            else if (multiplying) {
                 this.remainders[i] *= operationNumber;
             }
             else {
