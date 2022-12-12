@@ -25,10 +25,11 @@ public class Day11 {
             }
             monkeys.setDestinationMonkeys();
             monkeys.getDivisors();
-            monkeys.round(20);
+            monkeys.round(10000);
 
-            monkeys.printItems();
             monkeys.printActivities();
+
+            
 
 
             sc.close();

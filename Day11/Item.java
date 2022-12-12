@@ -44,7 +44,6 @@ public class Item {
             else {
                 this.remainders[i] += operationNumber;
             }
-            
             this.remainders[i] = this.remainders[i] % Item.divisors[i];
         }
     }
@@ -56,5 +55,13 @@ public class Item {
             }
         }
         return false;
+    }
+
+    public static int[] getDivisors() {
+        return Item.divisors;
+    }
+
+    public int[] getRemainders() {
+        return this.remainders;
     }
 }
