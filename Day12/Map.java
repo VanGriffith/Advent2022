@@ -98,7 +98,7 @@ public class Map {
         }
     }
 
-    public void findShortestPath(Vertex start, Vertex end) {
+    public int findShortestPath(Vertex start, Vertex end) {
         PriorityQueue<Vertex> distances = new PriorityQueue<Vertex>();
 
         for (Vertex v : verteces) {
@@ -112,7 +112,7 @@ public class Map {
             current.setNeighborDistances(distances);
         }
         
-        System.out.println(end.distance());
+        return end.distance();
     }
 
     public void printEdgeWeights() {
@@ -138,5 +138,15 @@ public class Map {
             }
             System.out.println();
         }
+    }
+
+    public int findBestStart() {
+        int min = Integer.MAX_VALUE;
+        for (Vertex vertex: verteces) {
+            if (vertex.height == 'a') {
+                min = Math.min(findShortestPath(vertex, this.end), min);
+            }
+        }
+        return min;
     }
 }

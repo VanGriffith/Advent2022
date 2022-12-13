@@ -17,8 +17,7 @@ public class Day12 {
             sc.close();
 
             Map heightMap = new Map(inputQueue);            
-            heightMap.findShortestPath(heightMap.start, heightMap.end);
-            
+            System.out.printf("Shortest a path: %d\n", heightMap.findBestStart());
         }
         catch (FileNotFoundException e) {
             System.out.println("Input File Not Found");
