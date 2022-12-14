@@ -23,16 +23,11 @@ public class Day13 {
             for (int i = 1; i <= treePairs.size(); i++) {
                 Tree left = treePairs.get(i-1)[0];
                 Tree right = treePairs.get(i-1)[1];
-                //System.out.printf("\n\n\n--- Pair %d ---\n", i);
-                //left.printTree();
-                //right.printTree();
 
                 if (Tree.compare(left, right)) {
                     sum += i;
-                    //System.out.println("Correct\n");
                 }
                 else {
-                    //System.out.println("Incorrect\n");
                 }
             }
             System.out.printf("Sum = %d\n", sum);
