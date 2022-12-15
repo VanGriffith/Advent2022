@@ -24,7 +24,6 @@ public class Advent2022 {
                 Day2.Day2.main(null);
                 Day2.Day2Problem2.main(null);
                 break;
-
             case 3:
                 Day3.Day3.main(null);
                 Day3.Day3Problem2.main(null);
@@ -63,7 +62,6 @@ public class Advent2022 {
             case 14:
                 Day14.Day14.main(null);
                 break;
-            /*
             case 15:
                 Day15.Day15.main(null);
                 break;
