@@ -10,14 +10,19 @@ public abstract class Tetranimo {
     }
 
     public void pushLeft() {
-        if (this.xPos > 0) this.xPos--;
+        if (this.checkLeft()) this.xPos--;
     }
+    public abstract boolean checkLeft();
+
     public void pushRight() {
-        if (this.xPos + 1 < Cavern.caveWidth) this.xPos++;
+        if (this.checkRight()) this.xPos++;
     }
+    public abstract boolean checkRight();
+
     public void fallDown() {
         this.yPos--;
     }
 
+    public abstract void cement();
     public abstract boolean collision();
 }
