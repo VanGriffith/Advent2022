@@ -37,7 +37,7 @@ public class CircularList {
         } while (current != head);
     }
 
-    public int coordinatesSum() {
+    public long coordinatesSum() {
         if (head == null) return  0;
 
         Node current = head;
@@ -46,7 +46,7 @@ public class CircularList {
         }
         current = current.next;
 
-        int sum = 0;
+        long sum = 0;
         for (int i = 1; i <= 3000; i++) {
             if (i % 1000 == 0) {
                 sum += current.data;

@@ -1,6 +1,5 @@
 package Day20;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,26 +7,28 @@ import java.io.FileNotFoundException;
 public class Day20 {
 
     public static CircularList list;
+    public static final long KEY = 811589153L;
+    public static ArrayList<Node> arraylist;
 
     public static void main(String[] args) {
         try {
             Scanner sc = new Scanner(new File("Day20/input.txt"));
             
-            Queue<Node> queue = new LinkedList<Node>();
+            arraylist = new ArrayList<Node>();
             list = new CircularList();
 
             while (sc.hasNextInt()) {
-                Node node = new Node(sc.nextInt());
-                queue.offer(node);
+                Node node = new Node(sc.nextInt() * KEY);
+                arraylist.add(node);
                 list.addToEnd(node);
             }
 
-            while (!queue.isEmpty()) {
-                
-                queue.poll().shift();
+            for (int i = 0; i < 10; i++){
+                for (Node node : arraylist) {
+                    node.shift();
+                }
             }
 
-            list.print();
 
             System.out.println("Coordinates Sum: " + list.coordinatesSum());
             

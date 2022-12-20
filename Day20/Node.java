@@ -1,10 +1,10 @@
 package Day20;
 
 public class Node {
-    public int data;
+    public long data;
     public Node previous, next;
     
-    public Node(int data) {
+    public Node(long data) {
         this.data = data;
         this.previous = null;
         this.next = null;
@@ -21,23 +21,32 @@ public class Node {
     }
 
     public void shift() {
-        if (this.data == 0) return;
-        this.previous.setNext(this.next);
-        this.next.setPrevious(this.previous);
         if (Day20.list.head == this) {
             Day20.list.head = this.next;
         }
+
+        long positionsToMove = Math.abs(data) % (Day20.arraylist.size() - 1);
+
         
         Node current = this;
-        if (this.data < 0) {
-            for (int i = 0; i > this.data; i--) {
+        if (positionsToMove == 0) {
+            System.out.println(this.data);
+        }
+        else if (this.data < 0) {
+            this.previous.setNext(this.next);
+            this.next.setPrevious(this.previous);
+
+            for (long i = 0; i > positionsToMove * -1; i--) {
                 current = current.previous;
             }
             this.setNext(current);
             this.setPrevious(current.previous);
         }
         else if (this.data > 0) {
-            for (int i = 0; i < this.data; i++) {
+            this.previous.setNext(this.next);
+            this.next.setPrevious(this.previous);
+
+            for (long i = 0; i < positionsToMove; i++) {
                 current = current.next;
             }
             this.setPrevious(current);
