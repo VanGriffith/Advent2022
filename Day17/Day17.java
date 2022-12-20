@@ -11,7 +11,8 @@ public class Day17 {
         try {
             Scanner sc = new Scanner(new File("Day17/input.txt"));
 
-
+            Cavern cave = new Cavern(7, 2022);
+            cave.print();
 
             sc.close();
         }
