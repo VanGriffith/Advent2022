@@ -10,12 +10,12 @@ public abstract class Tetranimo {
     }
 
     public void pushLeft() {
-        if (this.checkLeft()) this.xPos--;
+        if (!this.checkLeft()) this.xPos--;
     }
     public abstract boolean checkLeft();
 
     public void pushRight() {
-        if (this.checkRight()) this.xPos++;
+        if (!this.checkRight()) this.xPos++;
     }
     public abstract boolean checkRight();
 

@@ -9,7 +9,7 @@ public class Cavern {
     public static boolean[][] caveArray;
 
 
-    public int numRocks;
+    public int numRocks, moveNumber;
     public int rocksFallen;
 
     public Cavern(int caveWidth, int numRocks) {
@@ -20,6 +20,7 @@ public class Cavern {
         Cavern.caveArray = new boolean[maxHeight][caveWidth];
 
         this.rocksFallen = 0;
+        this.moveNumber = 0;
         
         for (int i = 0; i < caveWidth; i++) {
             Cavern.caveArray[0][i] = true;
@@ -28,10 +29,10 @@ public class Cavern {
 
     public void run() {
 
-        for (rocksFallen = 0; rocksFallen < 5; rocksFallen++) {
+        for (rocksFallen = 0; rocksFallen < numRocks; rocksFallen++) {
 
             Tetranimo rock;
-            int startY = highestRock + 3;
+            int startY = highestRock + 4;
             switch (this.rocksFallen % ROCK_TYPES) {
                 case 0: 
                     rock = new Horizontal(START_X, startY);
@@ -40,19 +41,31 @@ public class Cavern {
                     rock = new Plus(START_X, startY);
                     break;
                 case 2: 
-                    rock = new Horizontal(START_X, startY);
+                    rock = new Hook(START_X, startY);
                     break;
                 case 3:
-                    rock = new Horizontal(START_X, startY);
+                    rock = new Vertical(START_X, startY);
                     break;
                 case 4:
-                    rock = new Horizontal(START_X, startY);
+                    rock = new Square(START_X, startY);
                     break;
                 default:
                     throw new Error("Rock type OOB");
             }
 
-            while (!rock.collision()) {
+            while (true) {
+                switch (Day17.moves.charAt(moveNumber % Day17.movesLength)) {
+                    case '<':
+                        rock.pushLeft();
+                        break;
+                    case '>':
+                        rock.pushRight();
+                        break;
+                    default:
+                        throw new Error("Move Read input");
+                }
+                this.moveNumber++;
+                if (rock.collision()) break;
                 rock.fallDown();
             }
             rock.cement();
@@ -64,7 +77,7 @@ public class Cavern {
         for (int row = Cavern.highestRock + 2; row > 0; row--) {
             System.out.print("|");
             for (int column = 0; column < caveWidth; column++) {
-                System.out.print(caveArray[row][column] ? "#":" ");
+                System.out.print(caveArray[row][column] ? "#":".");
             }
             System.out.println("|");
         }
