@@ -84,7 +84,6 @@ public class Advent2022 {
             case 20:
                 Day20.Day20.main(null);
                 break;
-            /*
             case 21:
                 Day21.Day21.main(null);
                 break;
